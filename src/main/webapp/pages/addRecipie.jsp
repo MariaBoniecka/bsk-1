@@ -8,7 +8,12 @@
 </head>
 
 <body>
-
+	<form action="<c:url value="/logout" />" method="GET">
+    	<input id="logoutbut" type="submit" name="logout" value="Wyloguj" />
+	</form>
+	<form action="<c:url value="/" />" method="GET">
+    	<input id="switchbut" type="submit" name="back" value="Cofnij" />
+	</form>
 	<h2>Add recipie:</h2>
 	<form action="<c:url value="/addRecipie" />" method="post" >
 		Title: 

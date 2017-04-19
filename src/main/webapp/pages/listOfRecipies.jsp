@@ -8,7 +8,12 @@
 </head>
 
 <body>
-
+	<form action="<c:url value="/logout" />" method="GET">
+    	<input id="logoutbut" type="submit" name="logout" value="Wyloguj" />
+	</form>
+	<form action="<c:url value="/addRecipie" />" method="GET">
+    	<input id="switchbut" type="submit" name="back" value="Dodaj przepis" />
+	</form>
 	<h2>List of recipies:</h2>
 	<c:forEach items="${recipies}" var="recipie">
     ${recipie.title}<br>

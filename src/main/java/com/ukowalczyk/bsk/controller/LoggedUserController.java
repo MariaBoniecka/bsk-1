@@ -1,8 +1,11 @@
 package com.ukowalczyk.bsk.controller;
 
+import javax.servlet.http.*;
 import java.security.Principal;
 import java.util.List;
 
+import java.lang.Object;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,5 +62,21 @@ public class LoggedUserController {
 		log.info("zapisac tez sie udalo");
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
+	public String logoutDo(HttpServletRequest request,HttpServletResponse response){
+	HttpSession session= request.getSession(false);
+	    SecurityContextHolder.clearContext();
+	         session= request.getSession(false);
+	        if(session != null) {
+	            session.invalidate();
+	        }
+	        for(Cookie cookie : request.getCookies()) {
+	            cookie.setMaxAge(0);
+	        }
+
+		return "redirect:/login?logout";
+	}
+
 
 }
